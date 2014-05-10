@@ -34,6 +34,13 @@ func (t *AppTest) TestThatIndexPageWorks() {
 	t.AssertContentType("text/html")
 }
 
+func (t *AppTest) TestThatPostToCreateRedirects() {
+	data := url.Values{}
+	data.Set("name", "Batman")
+	t.PostForm("/create", data)
+	t.AssertOk()
+}
+
 func (t *AppTest) After() {
 	println("Tear down")
 }
